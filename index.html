@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar jap 01</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+
+
+    <svg style="visibility:hidden;" width="0" height="0"> 
+        <filter id="duotone" color-interpolation-filters="sRGB">         <feColorMatrix type="matrix" values="0.7 0 0 0 0.3 0.6 0 0 0 0.2 0.3 0 0 0 0.6 0 0 0 1 0"></feColorMatrix> 
+        </filter>
+      </svg>
+      
+      <div class="flex-contatiner">
+          <div class="calendar-container">
+              <div class="image-container">
+                  <div class="image"></div>
+              </div>
+              <div class="calendar">
+                  <h2 class="month-title" id="js-month"></h2>
+                  <table class="calendar-table">
+                    <thead>
+                      <tr><th>Dim</th><th>Lun</th><th>Mar</th><th>Mer</th><th>Jeu</th><th>Vend</th><th>Sam</th></tr>
+                    </thead>
+                    <tbody id="js-calendar-body"></tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      
+      <!-- STYLE  -->
+      
+      <style>
+      
+      @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:600');
+      
+      /* -------- Mixins -------- */	
+      /* Taille */
+      .size {
+        width: 100%;
+        height: 100%;
+      }
+      
+      /* -------- Variables -------- */	
+      :root {
+        --color-1: none;
+        --color-2: #99ccff;
+      }
+      
+      /* -------- Basic Styles -------- */	
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      
+      body {
+        background-image: linear-gradient(45deg, var(--color-1), var(--color-2));
+        overflow: hidden;
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      .flex-contatiner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+      
+      /* -------- Styles -------- */
+      .calendar-container {
+        position: relative;
+        width: 320px;
+        height: 320px;
+        box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+        overflow: visible;
+      }
+      
+      .image-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: var(--color-2);
+      }
+      
+      .image {
+        width: 100%;
+        height: 100%;
+        background-image: url('https://www.forgeworks.de/wp-content/uploads/box-background-configurator.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        filter: url(#duotone);
+      }
+      
+      .calendar {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin-top: 10%;
+        margin-left: 10%;
+        padding-top: 15%;
+        border: 10px solid #fff;
+        font-family: 'Josefin Sans', sans-serif;
+      }
+      
+      .month-title {
+        position: absolute;
+        top: -0.4em;
+        left: -0.3em;
+        margin: 0;
+        font-size: 400px;
+        line-height: 1;
+        letter-spacing: 0;
+        color: #f5f3ef;
+        opacity: .15;
+      }
+      
+      .calendar-table {
+        position: absolute;
+        width: 100%;
+        height: 85%;
+        border-collapse: collapse;
+        color: #f5f3ef;
+      }
+      
+      th,
+      td {
+        text-align: center;
+        font-size: 16px;
+      }
+      
+      td {
+        cursor: pointer;
+        transition: opacity .3s ease;
+      }
+      
+      td:not(.is-today) {
+        opacity: .5;
+      }
+      
+      td:hover {
+        opacity: 1;
+      }
+      
+      .is-today {
+        opacity: 1;
+        background-color: #fff;
+        color: var(--color-2);
+      }
+      
+      
+      </style>
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
